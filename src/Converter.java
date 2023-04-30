@@ -71,4 +71,11 @@ public class Converter {
         String pattern = "^[IVXLCDM]+$";
         return roman.matches(pattern);
     }
+
+    /*
+    public static boolean isValid(String roman) {
+        String pattern = "^[IVXLCDM]+$";
+        return roman.matches(pattern);
+    }
+    */
 }

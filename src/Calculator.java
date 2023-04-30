@@ -2,22 +2,35 @@ import java.util.Scanner;
 
 public class Calculator {
     void RunAPP() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter first number: ");
-        String num1 = input.nextLine();
+        //Scanner input = new Scanner(System.in);
+        //System.out.println("Enter first number: ");
+        //String num1 = input.nextLine();
 
-        System.out.println("Enter second number: ");
-        String num2 = input.nextLine();
+        //System.out.println("Enter second number: ");
+        //String num2 = input.nextLine();
 
-        System.out.println("Enter operator (+, -, *, /): ");
-        String operator = input.nextLine();
+        //System.out.println("Enter operator (+, -, *, /): ");
+        //String operator = input.nextLine();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите выражение: ");
+        String expression = scanner.nextLine();
+
+        // Разбиваем строку на операнды и оператор
+        String[] parts = expression.split("[\\+\\-\\*/]");
+        String num1 = String.valueOf(parts[0]);
+        String num2 = String.valueOf(parts[1]);
+        char operator = expression.charAt(parts[0].length());
+
+
+
 
         try {
-            if (Converter.isValid(num1) && Converter.isValid(num2)) {
-                int result = calculate(Converter.toArabic(num1), Converter.toArabic(num2), operator);
+            if (Converter.isValid(String.valueOf(num1)) && Converter.isValid(String.valueOf(num2))) {
+                int result = calculate(Converter.toArabic(String.valueOf(num1)), Converter.toArabic(String.valueOf(num2)), String.valueOf(operator));
                 System.out.println(Converter.toRoman(result));
             } else {
-                int result = calculate(Integer.parseInt(num1), Integer.parseInt(num2), operator);
+                int result = calculate(Integer.parseInt(String.valueOf(num1)), Integer.parseInt(String.valueOf(num2)), String.valueOf(operator));
                 System.out.println(result);
             }
         } catch (NumberFormatException e) {
